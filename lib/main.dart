@@ -19,33 +19,33 @@ final Map<String, WidgetBuilder> map = {
 
 String? firstState;
 
-main() {
-  firstState = '/demoRadio';
-  runApp(MyApp());
-}
-
-// Future<Null> main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   SharedPreferences preferences = await SharedPreferences.getInstance();
-//   List<String>? datas = preferences.getStringList('data');
-//   print('datas on main ==>> $datas');
-//   if (datas == null) {
-//     firstState = MyConstant.routeAuthen;
-//     runApp(MyApp());
-//   } else {
-//     switch (datas[1]) {
-//       case 'user':
-//         firstState = MyConstant.routeUserService;
-//         runApp(MyApp());
-//         break;
-//       case 'nurse':
-//         firstState = MyConstant.routeNurseService;
-//         runApp(MyApp());
-//         break;
-//       default:
-//     }
-//   }
+// main() {
+//   firstState = '/demoRadio';
+//   runApp(MyApp());
 // }
+
+Future<Null> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  List<String>? datas = preferences.getStringList('data');
+  print('datas on main ==>> $datas');
+  if (datas == null) {
+    firstState = MyConstant.routeAuthen;
+    runApp(MyApp());
+  } else {
+    switch (datas[1]) {
+      case 'user':
+        firstState = MyConstant.routeUserService;
+        runApp(MyApp());
+        break;
+      case 'nurse':
+        firstState = MyConstant.routeNurseService;
+        runApp(MyApp());
+        break;
+      default:
+    }
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
